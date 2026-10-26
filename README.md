@@ -1,42 +1,30 @@
-# FCM toolbox
+# knock-knock
 
-This public toolbox allows you to easily **test** and **debug** the [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) service.
-- Send and receive FCM messages
-- Manage registered devices
-- Self-hosting capabilities
+面向移动开发者的推送测试工具箱，基于 [FCM-toolbox](https://github.com/SimonMarquis/FCM-toolbox) 派生，参考 [DooPush](https://github.com/doopush/doopush) 的多通道适配方案。目标采用 Kotlin Multiplatform（KMP）与 Compose Multiplatform（CMP），覆盖 Android 和 iOS，只测试工具箱自身安装实例的各通道收发。
 
-**On the public toolbox versions, users share the same [FCM](https://firebase.google.com/docs/cloud-messaging/) and [FRD](https://firebase.google.com/docs/database/) instances, be responsible!**
+> 当前处于设计阶段：已创建 Fork 并形成开发文档；KMP/CMP、iOS 和国内厂商通道改造尚未实施。现有应用与 Firebase 代码来自上游，不代表 knock-knock 的目标功能已经可用。
 
-![demo](art/demo.gif)
+## 开发文档
 
-## Android app
+| 文档 | 内容 |
+|---|---|
+| [项目设计](docs/design.md) | 产品边界、架构取舍、平台能力、数据契约、接口及验收不变量 |
+| [开发与验收计划](docs/development-plan.md) | 任务依赖、阶段范围、实施门槛、验证要求及当前交接状态 |
 
-Download the latest public version on the [Play Store](https://play.google.com/store/apps/details?id=fr.smarquis.fcm) or choose your [release version](https://github.com/SimonMarquis/FCM-toolbox/releases).
+先阅读项目设计，再按开发计划评审架构、冻结工具链和落实平台账号，之后进入代码实施。首版拟覆盖 Android FCM、iOS FCM/APNs，国内厂商通道分阶段接入；具体范围以设计文档为准。
 
-- Notify its presence and send its FCM token to a remote server
-- Issue a notification for each message
-- Retain all received messages
+## 当前仓库
 
-![android_empty](art/android_empty.png) ![android_lis](art/android_list.png) ![android_notifications](art/android_notifications.png)
+- `app/`：上游 Android 应用。
+- `firebase/`：上游 Firebase Functions 与 Web 应用。
+- `docs/design.md`、`docs/development-plan.md`：knock-knock 开发文档。
+- `docs/index.html`：上游网页资产，保留原用途。
 
-### Configuration
+`shared/`、`iosApp/`、独立发送服务和新 Web 控制台属于拟议改造，尚未创建。上游商店链接、公开演示服务及 Firebase 配置均不作为 knock-knock 的发布或测试入口；独立应用身份和服务配置要求见项目设计。
 
-You can build your own version of the Android FCM toolbox app and provide your own `google-services.json` file.  
-[See official documentation](https://firebase.google.com/docs/cloud-messaging/android/client).
+## 来源与许可
 
-## Web app
-
-The public web app is located at [https://fcm-toolbox-public.web.app](https://fcm-toolbox-public.web.app)
-
-- Send multiple types of payloads
-- Maintain a local list of devices
-- See online devices
-
-![web](art/web.png)
-
-### Configuration
-
-You can host your own version of the web FCM toolbox or simply provide your own Firebase identifiers.  
-[See official documentation](https://firebase.google.com/docs/cloud-messaging/js/client).  
-
-![web_configuration](art/web_configuration.png) 
+- 本仓库：[tipsypotato/knock-knock](https://github.com/tipsypotato/knock-knock)，对应 Git 远端 `origin`。
+- 父仓：[SimonMarquis/FCM-toolbox](https://github.com/SimonMarquis/FCM-toolbox)，对应 Git 远端 `upstream`。
+- 初始研究与分叉基线：`f793400b65f038b408dd04a73cdb10334ed87886`；[上游原始说明](https://github.com/SimonMarquis/FCM-toolbox/blob/f793400b65f038b408dd04a73cdb10334ed87886/README.md)保留安装、截图与原实现参考。
+- 保留上游 [Apache-2.0 许可证](LICENSE)。DooPush 目前仅作为调研参考，后续若复制代码，需按开发文档保留其 MIT 声明并记录来源。

@@ -1,6 +1,6 @@
 # knock-knock 项目开发设计
 
-> 日期：2026-10-23，Asia/Shanghai。状态：设计草案，供开发前评审；未进入代码实施。
+> 创建：2026-10-23；整理：2026-10-26，Asia/Shanghai。状态：设计草案，供开发前评审；未进入代码实施。
 > 已确认：从 FCM-toolbox 派生，采用 Kotlin Multiplatform（KMP）与 Compose Multiplatform（CMP），覆盖 Android、iOS；只测试工具箱自身的各通道收发。
 > 本轮交付范围为真实 Fork 与开发文档，产品代码未修改。下文新增模块、接口、配置和里程碑均为拟议设计，不代表已经创建或验证。
 
@@ -315,7 +315,7 @@ Observation 的 testId、attemptId、endpoint 必须相互匹配且归属当前�
 | AC-09 | 每条宣称支持的国内通道有账号前提、SDK/ROM/设备、消息模式、请求与回调证据；缺条件明确列未完成 |
 | AC-10 | 导出和普通日志不含私钥、完整鉴权凭据、默认完整设备标识；7 天保留及本地清空范围可验证，清理后不把服务端副本重新伪造为本地收件 |
 
-具体任务、验证层次和开发门槛见 [开发路线与验收计划](../plans/2026-10-23-knock-knock-development-plan.md)。
+具体任务、验证层次和开发门槛见 [开发路线与验收计划](development-plan.md)。
 
 ## 10. 待确认与风险
 
